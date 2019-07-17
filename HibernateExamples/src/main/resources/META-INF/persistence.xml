@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd" version="2.1">
+    <persistence-unit name="sqlite">
+        <description>CriteriaQuery Demo</description>
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>hibernate.example.model.Contact</class>
+        <class>hibernate.example.model.Point</class>
+        <class>hibernate.example.model.Parent</class>
+        <class>hibernate.example.model.Child</class>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLiteDialect" />
+            <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:test.db" />
+            <property name="javax.persistence.jdbc.user" value="" />
+            <property name="javax.persistence.jdbc.password" value="" />
+            <property name="hibernate.hbm2ddl.auto" value="validate" />
+        </properties>
+    </persistence-unit>
+</persistence>
