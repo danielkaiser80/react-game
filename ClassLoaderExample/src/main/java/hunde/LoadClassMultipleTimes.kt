@@ -1,22 +1,19 @@
-package hunde;
+package hunde
 
-import java.io.File;
-import java.net.URL;
-import java.net.URLClassLoader;
+import java.io.File
+import java.net.URLClassLoader
 
-public class LoadClassMultipleTimes {
 
-	static Object newInstance(String path, String classname) throws Exception {
-		URL url = new File(path).toURI().toURL();
-		System.out.println(url);
-		try (URLClassLoader urlClassLoader = new URLClassLoader(new URL[] { url });) {
-			Class<?> c = urlClassLoader.loadClass(classname);
-			return c.getDeclaredConstructor().newInstance();
-		}
-	}
+fun main() {
+    repeat(4) {
+        newInstance("ClassLoaderHelper/target/classes/", "tests.ClassToLoadMultipleTimes")
+    }
+}
 
-	public static void main(String[] args) throws Exception {
-		newInstance("../ClassLoaderHelper/bin/", "tests.ClassToLoadMultipleTimes");
-		newInstance("../ClassLoaderHelper/bin/", "tests.ClassToLoadMultipleTimes");
-	}
+internal fun newInstance(path: String, classname: String): Any {
+    val url = File(path).toURI().toURL()
+
+    URLClassLoader(arrayOf(url)).use { urlClassLoader ->
+        return urlClassLoader.loadClass(classname).getDeclaredConstructor().newInstance()
+    }
 }
