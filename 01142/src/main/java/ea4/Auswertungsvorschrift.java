@@ -1,4 +1,4 @@
-package EA4;
+package ea4;
 
 public class Auswertungsvorschrift {
 

@@ -1,4 +1,4 @@
-package EA4;
+package ea4;
 public class rationaleZahlBasisB {
 
 	private static void rationalBasisB (int p, int q, int Basis) {
