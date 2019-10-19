@@ -10,10 +10,9 @@ fun main() {
     }
 }
 
-internal fun newInstance(path: String, classname: String): Any {
-    val url = File(path).toURI().toURL()
-
-    URLClassLoader(arrayOf(url)).use { urlClassLoader ->
-        return urlClassLoader.loadClass(classname).getDeclaredConstructor().newInstance()
-    }
-}
+internal fun newInstance(path: String, classname: String) =
+        File(path).toURI().toURL().let { url ->
+            URLClassLoader(arrayOf(url)).use {
+                it.loadClass(classname).getDeclaredConstructor().newInstance()
+            }
+        }
