@@ -2,28 +2,13 @@ import React from "react";
 
 interface SquareProps {
     value: string;
-    // FIXME set correct type
-    onClick: any;
+    onClick: () => void;
 }
 
-interface SquareState {
-    value: string;
-}
-
-export class Square extends React.Component<SquareProps, SquareState> {
-
-    constructor(props: SquareProps) {
-        super(props);
-        this.state = {
-            value: ''
-        };
-    }
-
-    render() {
-        return (
-            <button className="square" onClick={() => this.props.onClick()}>
-                {this.props.value}
-            </button>
-        );
-    }
+ export function Square(props: SquareProps) {
+    return (
+        <button className="square" onClick={props.onClick}>
+            {props.value}
+        </button>
+    );
 }
