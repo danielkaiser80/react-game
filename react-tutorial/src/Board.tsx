@@ -1,17 +1,14 @@
 import React from "react";
 import {Square} from "./Square";
 
-interface BoardProps {
-}
-
 interface BoardState {
     squares: string[];
     xIsNext: boolean;
 }
 
-export class Board extends React.Component<BoardProps, BoardState> {
+export class Board extends React.Component<{}, BoardState> {
 
-    constructor(props: BoardProps) {
+    constructor(props: {}) {
         super(props);
         this.state = {
             squares: Array(9).fill(null),
