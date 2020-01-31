@@ -1,11 +1,10 @@
 package com.tutorialspoint;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /***
  * Spring tutorial program "HelloWorld"
- *
  */
 public final class HelloWorld {
 
@@ -14,7 +13,7 @@ public final class HelloWorld {
     /***
      * Logger for logging all events
      */
-    private static final Log LOGGER = LogFactory.getLog(HelloWorld.class);
+    private static final Logger logger = LoggerFactory.getLogger(HelloWorld.class);
 
     private String s = "";
 
@@ -31,7 +30,7 @@ public final class HelloWorld {
     }
 
     public void getMessage() {
-        LOGGER.info("Your Message: " + message);
+        logger.info("Your Message: {}", message);
     }
 
     /***
@@ -39,7 +38,7 @@ public final class HelloWorld {
      */
     public void init() {
         s = "Bean is going through init.";
-        LOGGER.info(s);
+        logger.info(s);
     }
 
     /***
@@ -47,6 +46,6 @@ public final class HelloWorld {
      */
     public void destroy() {
         s = "Bean will destroy now.";
-        LOGGER.info(s);
+        logger.info(s);
     }
 }

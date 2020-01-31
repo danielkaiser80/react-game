@@ -22,10 +22,10 @@ public final class MainApp {
 
         try (ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("com.Beans.xml")) {
 
-            final HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
+            final HelloWorld obj = context.getBean(HelloWorld.class);
             obj.getMessage();
 
-            final HelloWorld2 obj2 = (HelloWorld2) context.getBean("helloWorld2");
+            final HelloWorld2 obj2 = context.getBean(HelloWorld2.class);
             obj2.getMessage();
 
             context.registerShutdownHook();

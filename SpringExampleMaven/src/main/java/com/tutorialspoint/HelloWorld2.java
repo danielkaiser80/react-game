@@ -1,7 +1,7 @@
 package com.tutorialspoint;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public final class HelloWorld2 {
     private String message;
@@ -9,7 +9,7 @@ public final class HelloWorld2 {
     /***
      * Logger for logging all events
      */
-    private static final Log LOGGER = LogFactory.getLog(HelloWorld2.class);
+    private static final Logger logger = LoggerFactory.getLogger(HelloWorld2.class);
 
     private HelloWorld2() {
         /* EMPTY */
@@ -20,15 +20,15 @@ public final class HelloWorld2 {
     }
 
     public void getMessage() {
-        LOGGER.info("Your Message 2: " + message);
+        logger.info("Your Message 2: {}", message);
     }
 
     public static void init() {
-        LOGGER.info("HelloWorld2 is going through init.");
+        logger.info("HelloWorld2 is going through init.");
     }
 
     public void destroy() {
         message = "";
-        LOGGER.info("HelloWorld2 will destroy now.");
+        logger.info("HelloWorld2 will destroy now.");
     }
 }

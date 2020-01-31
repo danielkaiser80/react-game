@@ -20,18 +20,19 @@
     </build>
     <properties>
         <spring.version>5.2.3.RELEASE</spring.version>
-        <log4j.version>2.13.0</log4j.version>
+        <slf4j.version>2.0.0-alpha0</slf4j.version>
     </properties>
     <dependencies>
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>${log4j.version}</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j.version}</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>${slf4j.version}</version>
         </dependency>
 
         <!-- Spring dependencies -->
