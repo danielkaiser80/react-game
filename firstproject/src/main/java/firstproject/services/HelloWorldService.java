@@ -5,36 +5,37 @@ import org.springframework.stereotype.Service;
 /**
  * Hello World service class from the Spring tutorial
  */
-@Service("helloWorldService")
+@Service
 public class HelloWorldService {
 
-	/**
-	 * the name of the person
-	 */
-	private String name;
+    /**
+     * the name of the person
+     */
+    private String name;
 
 
-	/**
-	 * Set a new name
-	 * 
-	 * @param name the new name
-	 */
-	public void setName(final String name) {
-		this.name = name;
-	}
+    /**
+     * Set a new name
+     *
+     * @param name the new name
+     */
+    public void setName(final String name) {
+        this.name = name;
+    }
 
-	/**
-	 * @return the name
-	 */
-	protected String getName() {
-		return name;
-	}
+    /**
+     * @return the name
+     */
+    protected String getName() {
+        return name;
+    }
 
-	/**
-	 * Say hello to the person
-	 * @return the greeting
-	 */
-	public String sayHello() {
-		return "Hello! " + name;
-	}
+    /**
+     * Say hello to the person
+     *
+     * @return the greeting
+     */
+    public String sayHello() {
+        return "Hello! " + name;
+    }
 }
