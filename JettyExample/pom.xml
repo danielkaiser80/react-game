@@ -4,29 +4,33 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <properties>
+        <jettyVersion>9.4.26.v20200117</jettyVersion>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <version>3.8.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>13</source>
+                    <target>13</target>
                     <fork>true</fork>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jettyVersion}</version>
             </plugin>
         </plugins>
     </build>
 
     <groupId>groupId</groupId>
     <artifactId>ServletExample</artifactId>
+    <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <properties>
-        <!-- Adapt this to a version found on
-             http://central.maven.org/maven2/org/eclipse/jetty/jetty-maven-plugin/
-          -->
-        <jettyVersion>9.4.17.v20190418</jettyVersion>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -35,6 +39,5 @@
             <version>${jettyVersion}</version>
         </dependency>
     </dependencies>
-
 
 </project>
