@@ -2,9 +2,10 @@ package ifaceloading;
 
 
 /**
- * Example Methode
+ * Example class to be loaded by reflection.
  * implements ExternIF
  */
+@SuppressWarnings("unused") // used by reflection
 public class ExternMethode implements ExternIF {
 	
 	private InternIF caller;

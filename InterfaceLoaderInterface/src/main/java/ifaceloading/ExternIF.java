@@ -4,6 +4,7 @@ package ifaceloading;
 /**
  * Example Interface
  */
+@SuppressWarnings("unused") // used by reflection
 public interface ExternIF {
     void setCaller(InternIF caller);
 
