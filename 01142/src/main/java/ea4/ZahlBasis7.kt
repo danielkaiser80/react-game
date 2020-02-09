@@ -10,7 +10,7 @@ fun main() {
     var c: Double
     var d: Int
 
-    for (i in 0..24) {
+    repeat(25) {
         c = (g * a - b) * BASIS
         d = c.toInt()
         b = b * BASIS + d

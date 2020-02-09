@@ -1,29 +1,34 @@
-package ea4;
+package ea4
 
-public class rationaleZahlBasisB {
+import kotlin.system.exitProcess
 
-    private static void rationalBasisB(int p, int q, int Basis) {
-        if (p > q) {
-            System.out.println("Der Zähler muss kleiner als der Nenner sein.");
-            System.exit(-1);
-        }
-        int erg = (p % q) * Basis;
-        System.out.print("0,");
-
-        for (int i = 0; i < 20; i++) {
-            System.out.print((erg / q));
-            erg = (erg % q) * Basis;
-        }
+private fun rationalBasisB(p: Int, q: Int, basis: Int) {
+    if (p <= q) {
+        doCalculation(p, q, basis)
+    } else {
+        println("Der Zähler muss kleiner als der Nenner sein.")
+        exitProcess(-1)
     }
+}
 
-    public static void main(String[] args) {
-        rationaleZahlBasisB.rationalBasisB(1, 3, 2);
-        System.out.println();
-        rationaleZahlBasisB.rationalBasisB(1, 7, 3);
-        System.out.println();
-        rationaleZahlBasisB.rationalBasisB(1, 11, 5);
-        System.out.println();
-        rationaleZahlBasisB.rationalBasisB(1, 13, 7);
-        System.out.println();
+private fun doCalculation(p: Int, q: Int, basis: Int) {
+    var erg = p % q * basis
+    print("0,")
+    repeat(20) {
+        print(erg / q)
+        erg = erg % q * basis
     }
+}
+
+fun main() {
+    rationalBasisB(1, 3, 2)
+    println()
+    rationalBasisB(1, 7, 3)
+    println()
+    rationalBasisB(1, 11, 5)
+    println()
+    rationalBasisB(1, 13, 7)
+    println()
+    rationalBasisB(2, 13, 7)
+    println()
 }
