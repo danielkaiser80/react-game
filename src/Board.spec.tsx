@@ -1,7 +1,7 @@
 import React from 'react'
 import {fireEvent, render, screen} from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import {Board} from "./Board";
+import Board from "./Board";
 
 
 test('clicking first button changes value to O', async () => {

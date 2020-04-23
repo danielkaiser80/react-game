@@ -5,34 +5,38 @@ interface BoardProps {
     onClick: (i: number) => void;
 }
 
-export class Board extends React.Component<BoardProps, {}> {
+/**
+ * The actual game board.
+ */
+const Board = (props: BoardProps) => {
 
-    renderSquare(i: number) {
+    const renderSquare = (i: number) => {
         return <Square key={i}
-                       value={this.props.squares[i]}
-                       onClick={() => this.props.onClick(i)}
+                       value={props.squares[i]}
+                       onClick={() => props.onClick(i)}
         />;
-    }
+    };
 
-    render() {
-        return [0, 1, 2].map(i => (
-            <div className="board-row">
-                {
-                    [0, 1, 2].map(j => {
-                        return this.renderSquare(i * 3 + j)
-                    })
-                }
-            </div>
-        ))
-    }
+    const board = [0, 1, 2].map(i => (
+        <div key={`row_${i}`} className="board-row">
+            {
+                [0, 1, 2].map(j => {
+                    return renderSquare(i * 3 + j)
+                })
+            }
+        </div>
+    ));
+    return (<> {board} </>) // https://github.com/microsoft/TypeScript/issues/33487
 }
+
+export default Board;
 
 interface SquareProps {
     value: string;
     onClick: () => void;
 }
 
-function Square(props: SquareProps) {
+const Square = (props: SquareProps) => {
     return (
         <button className="square" onClick={props.onClick}>
             {props.value}

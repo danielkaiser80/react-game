@@ -1,5 +1,5 @@
 import React from "react";
-import {Board} from "./Board";
+import Board from "./Board";
 
 interface GameProps {
     history: {
@@ -24,9 +24,11 @@ export class Game extends React.Component<{}, GameProps> {
         const history = this.state.history;
         const current = history[history.length - 1];
         const squares = current.squares.slice();
-        if (this.calculateWinner(squares) || squares[i]) {
+
+        if (this.calculateWinner(squares) ?? squares[i]) {
             return;
         }
+
         squares[i] = this.state.xIsNext ? 'X' : 'O';
         this.setState({
             history: history.concat([{
