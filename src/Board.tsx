@@ -1,8 +1,8 @@
-import React from "react";
+import React from "react"
 
 interface BoardProps {
-    squares: string[];
-    onClick: (i: number) => void;
+    squares: string[]
+    onClick: (i: number) => void
 }
 
 /**
@@ -14,8 +14,8 @@ const Board = (props: BoardProps) => {
         return <Square key={i}
                        value={props.squares[i]}
                        onClick={() => props.onClick(i)}
-        />;
-    };
+        />
+    }
 
     const board = [0, 1, 2].map(i => (
         <div key={`row_${i}`} className="board-row">
@@ -25,15 +25,16 @@ const Board = (props: BoardProps) => {
                 })
             }
         </div>
-    ));
+    ))
+
     return (<> {board} </>) // https://github.com/microsoft/TypeScript/issues/33487
 }
 
 export default Board;
 
 interface SquareProps {
-    value: string;
-    onClick: () => void;
+    value: string
+    onClick: () => void
 }
 
 const Square = (props: SquareProps) => {
@@ -41,5 +42,5 @@ const Square = (props: SquareProps) => {
         <button className="square" onClick={props.onClick}>
             {props.value}
         </button>
-    );
+    )
 }
