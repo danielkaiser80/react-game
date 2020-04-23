@@ -44,9 +44,9 @@ export class Game extends React.Component<{}, GameProps> {
 
         let status;
         if (winner) {
-            status = 'Winner: ' + winner;
+            status = `Winner: ${winner}`;
         } else {
-            status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+            status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
         }
 
         return (

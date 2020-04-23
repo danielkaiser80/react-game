@@ -8,14 +8,14 @@ interface BoardProps {
 export class Board extends React.Component<BoardProps, {}> {
 
     renderSquare(i: number) {
-        return <Square
-            value={this.props.squares[i]}
-            onClick={() => this.props.onClick(i)}
+        return <Square key={i}
+                       value={this.props.squares[i]}
+                       onClick={() => this.props.onClick(i)}
         />;
     }
 
     render() {
-        return [0, 1, 2].map((i) => (
+        return [0, 1, 2].map(i => (
             <div className="board-row">
                 {
                     [0, 1, 2].map(j => {
