@@ -37,7 +37,7 @@ const Game = () => {
 
         setHistory(history.concat(
             [{
-                squares: squares,
+                squares,
             }]
         ))
     }
