@@ -5,30 +5,21 @@ import { SquareContent } from "./types";
 
 const Game = () => {
   const [xIsNext, setXIsNext] = useState(true);
-  const [history, setHistory] = useState<{ squares: SquareContent[] }[]>([
-    {
-      squares: Array(9).fill(null),
-    },
+  const [history, setHistory] = useState<SquareContent[][]>([
+    Array(9).fill(null),
   ]);
-  const current = history[history.length - 1];
+  const currentSquares = history[history.length - 1];
 
   const handleClick = (i: number) => {
-    const squares = current.squares.slice();
-
-    if (calculateWinner(squares) ?? squares[i]) {
+    if (calculateWinner(currentSquares) ?? currentSquares[i]) {
       return;
     }
 
-    squares[i] = xIsNext ? "X" : "O";
-    setXIsNext(!xIsNext);
+    const nextSquares = currentSquares.slice();
+    nextSquares[i] = xIsNext ? "X" : "O";
 
-    setHistory(
-      history.concat([
-        {
-          squares,
-        },
-      ])
-    );
+    setHistory([...history, nextSquares]);
+    setXIsNext(!xIsNext);
   };
 
   function jumpTo(move: number) {
@@ -39,7 +30,7 @@ const Game = () => {
     return history.map((step, move) => {
       const desc = move ? `Go to move #${move}` : "Go to game start";
       return (
-        <li key={step.squares.join()}>
+        <li key={step.join()}>
           <button onClick={() => jumpTo(move)} type="button">
             {desc}
           </button>
@@ -48,7 +39,7 @@ const Game = () => {
     });
   }, [history]);
 
-  const winner = calculateWinner(current.squares);
+  const winner = calculateWinner(currentSquares);
 
   const status = winner
     ? `Winner: ${winner}`
@@ -57,7 +48,7 @@ const Game = () => {
   return (
     <div className="game">
       <div className="game-board">
-        <Board squares={current.squares} onClick={(i) => handleClick(i)} />
+        <Board squares={currentSquares} onClick={(i) => handleClick(i)} />
       </div>
       <div className="game-info">
         <div>{status}</div>

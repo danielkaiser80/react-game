@@ -4,21 +4,18 @@ import "@testing-library/jest-dom/extend-expect";
 import Board from "./Board";
 
 test("clicking first button changes value to O", async () => {
+  let allButtons: HTMLElement[];
   const board = (
     <Board
       squares={["X", "X", "O", "X", "X", "O", null, "O", null]}
       onClick={(i) => {
-        console.log("clicked: ", i);
-        handleClick(i);
+        allButtons[i].textContent = "O";
       }}
     />
   );
-  const handleClick = (i: number) => {
-    allButtons[i].textContent = "O";
-  };
   render(board);
 
-  const allButtons = screen.getAllByRole("button");
+  allButtons = screen.getAllByRole("button");
   fireEvent.click(allButtons[0]);
 
   const buttonTexts = allButtons.map((value) => value.textContent);
