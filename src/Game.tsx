@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Board from "./Board";
 import calculateWinner from "./util";
 import { SquareContent } from "./types";

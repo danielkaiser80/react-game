@@ -1,4 +1,3 @@
-import React from "react";
 import { SquareContent } from "./types";
 
 interface SquareProps {

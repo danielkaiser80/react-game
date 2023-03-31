@@ -1,4 +1,3 @@
-import React from "react";
 import Square from "./Square";
 import { SquareContent } from "./types";
 import calculateWinner from "./util";
