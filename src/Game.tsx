@@ -10,17 +10,10 @@ const Game = () => {
   ]);
   const currentSquares = history[history.length - 1];
 
-  const handleClick = (i: number) => {
-    if (calculateWinner(currentSquares) ?? currentSquares[i]) {
-      return;
-    }
-
-    const nextSquares = currentSquares.slice();
-    nextSquares[i] = xIsNext ? "X" : "O";
-
+  function handlePlay(nextSquares: SquareContent[]) {
     setHistory([...history, nextSquares]);
     setXIsNext(!xIsNext);
-  };
+  }
 
   function jumpTo(move: number) {
     // TODO
@@ -30,7 +23,9 @@ const Game = () => {
     return history.map((step, move) => {
       const desc = move ? `Go to move #${move}` : "Go to game start";
       return (
-        <li key={step.join()}>
+        // safe as no move is re-ordered or deleted
+        // eslint-disable-next-line react/no-array-index-key
+        <li key={move}>
           <button onClick={() => jumpTo(move)} type="button">
             {desc}
           </button>
@@ -48,7 +43,11 @@ const Game = () => {
   return (
     <div className="game">
       <div className="game-board">
-        <Board squares={currentSquares} onClick={(i) => handleClick(i)} />
+        <Board
+          squares={currentSquares}
+          onPlay={(nextSquares) => handlePlay(nextSquares)}
+          xIsNext={xIsNext}
+        />
       </div>
       <div className="game-info">
         <div>{status}</div>
