@@ -6,15 +6,17 @@ import Board from "./Board";
 test("clicking first button changes value to O", async () => {
   const board = (
     <Board
-      squares={["X", "X", "O", "X", "X", "O", "", "O", ""]}
-      onClick={(i) => handleClick(i)}
+      squares={["X", "X", "O", "X", "X", "O", null, "O", null]}
+      onClick={(i) => {
+        console.log("clicked: ", i);
+        handleClick(i);
+      }}
     />
   );
-  render(board);
-
-  function handleClick(i: number) {
+  const handleClick = (i: number) => {
     allButtons[i].textContent = "O";
-  }
+  };
+  render(board);
 
   const allButtons = screen.getAllByRole("button");
   fireEvent.click(allButtons[0]);
