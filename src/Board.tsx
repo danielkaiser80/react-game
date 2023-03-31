@@ -1,16 +1,18 @@
 import React from "react";
+import Square from "./Square";
+import { SquareContent } from "./types";
 
 interface BoardProps {
-  squares: string[];
+  squares: SquareContent[];
   onClick: (i: number) => void;
 }
 
 /**
  * The actual game board.
  */
-const Board = (props: BoardProps) => {
+const Board = ({ onClick, squares }: BoardProps) => {
   const renderSquare = (i: number) => (
-    <Square key={i} value={props.squares[i]} onClick={() => props.onClick(i)} />
+    <Square key={i} value={squares[i]} onClick={() => onClick(i)} />
   );
 
   const board = [0, 1, 2].map((i) => (
@@ -23,16 +25,3 @@ const Board = (props: BoardProps) => {
 };
 
 export default Board;
-
-interface SquareProps {
-  value: string;
-  onClick: () => void;
-}
-
-const Square = (props: SquareProps) => {
-  return (
-    <button className="square" onClick={props.onClick}>
-      {props.value}
-    </button>
-  );
-};

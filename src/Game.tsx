@@ -1,14 +1,16 @@
 import React, { useMemo, useState } from "react";
 import Board from "./Board";
-import { calculateWinner } from "./util";
+import calculateWinner from "./util";
+import { SquareContent } from "./types";
 
 const Game = () => {
   const [xIsNext, setXIsNext] = useState(true);
-  const [history, setHistory] = useState([
+  const [history, setHistory] = useState<{ squares: SquareContent[] }[]>([
     {
       squares: Array(9).fill(null),
     },
   ]);
+  const current = history[history.length - 1];
 
   const handleClick = (i: number) => {
     const squares = current.squares.slice();
@@ -37,14 +39,15 @@ const Game = () => {
     return history.map((step, move) => {
       const desc = move ? `Go to move #${move}` : "Go to game start";
       return (
-        <li>
-          <button onClick={() => jumpTo(move)}>{desc}</button>
+        <li key={step.squares.join()}>
+          <button onClick={() => jumpTo(move)} type="button">
+            {desc}
+          </button>
         </li>
       );
     });
   }, [history]);
 
-  const current = history[history.length - 1];
   const winner = calculateWinner(current.squares);
 
   const status = winner
